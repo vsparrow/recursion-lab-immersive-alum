@@ -1,7 +1,14 @@
 // Code your solution here!
 // let count = 0
 
-
+function addUpTo(array,limit){
+  console.log(`${array} ** ${limit}`);
+  // if(limit == 1){return array[0]+ array[1]}
+  if(limit == 0){return array[0]}
+  // return array[0] + addUpTo(array.splice(0,1),--limit)
+  return parseInt(array.splice(0,1)) + addUpTo(array,--limit)
+}
+console.log  (addUpTo([2, 4, 5, 3], 2))
 
 
 function isPalindrome(string){
