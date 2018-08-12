@@ -1,14 +1,21 @@
 // Code your solution here!
 // let count = 0
 
+function maxOf(array){
+  if(array.length == 1) {return array[0]}
+  if(array[0] > array[array.length-1]){array.pop();return maxOf(array)}
+  else{array.shift(); return maxOf(array)}
+}
+// console.log(maxOf([1, 10, 5, 13]));
+
 function addUpTo(array,limit){
-  console.log(`${array} ** ${limit}`);
+  // console.log(`${array} ** ${limit}`);
   // if(limit == 1){return array[0]+ array[1]}
   if(limit == 0){return array[0]}
   // return array[0] + addUpTo(array.splice(0,1),--limit)
   return parseInt(array.splice(0,1)) + addUpTo(array,--limit)
 }
-console.log  (addUpTo([2, 4, 5, 3], 2))
+// console.log  (addUpTo([2, 4, 5, 3], 2))
 
 
 function isPalindrome(string){
