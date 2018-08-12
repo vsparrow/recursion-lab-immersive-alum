@@ -1,4 +1,26 @@
 // Code your solution here!
+// let count = 0
+
+
+
+
+function isPalindrome(string){
+  if (string.length == 1) {return true}
+  if (string[0] != string[string.length-1]) {return false}
+  // console.log(count++);
+  return isPalindrome(string.substring(1,string.length-1))
+  // return "default"
+}
+//
+// console.log(isPalindrome("madamimadam"))
+// console.log(isPalindrome("cool"))
+// console.log(isPalindrome("I"))
+
+
+
+
+
+
 
 let reverseString = (string, start=null,middle=null,end=null)=>{
   if(middle==null){ //beginning
@@ -49,8 +71,8 @@ let reverseString = (string, start=null,middle=null,end=null)=>{
 
 // let r_return = reverseString('pizza')
 // let r_return = reverseString('abcd')
-let r_return = reverseString('chocolate')
-console.log(r_return)
+// let r_return = reverseString('chocolate')
+// console.log(r_return)
 
 
 // let count = 1
