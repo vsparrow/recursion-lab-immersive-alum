@@ -5,26 +5,37 @@
 function includesNumber(array,number){
   if(array.length == 0){return false}
   if(array[0] == number){return true}
-  array.shift()
-  return includesNumber(array,number)
+  // array.shift()
+  // return includesNumber(array,number)
+  return includesNumber(array.slice(1),number)
 }
 
-console.log(includesNumber([1, 4, 5, 3], 6));
+// console.log(includesNumber([1, 4, 5, 3], 6));
 
+//fi version
 function maxOf(array){
   if(array.length == 1) {return array[0]}
-  if(array[0] > array[array.length-1]){array.pop();return maxOf(array)}
-  else{array.shift(); return maxOf(array)}
+  return Math.max(array.pop(),maxOf(array))
 }
+// function maxOf(array){
+//   if(array.length == 1) {return array[0]}
+//   //this works
+//   if(array[0] > array[array.length-1]){array.pop();return maxOf(array)}
+//   else{array.shift(); return maxOf(array)}
+// }
 // console.log(maxOf([1, 10, 5, 13]));
 
-function addUpTo(array,limit){
-  // console.log(`${array} ** ${limit}`);
-  // if(limit == 1){return array[0]+ array[1]}
-  if(limit == 0){return array[0]}
-  // return array[0] + addUpTo(array.splice(0,1),--limit)
-  return parseInt(array.splice(0,1)) + addUpTo(array,--limit)
+//fi version. works because 0 is falsey
+function addUpTo(array, index){
+  return index ? array[index] + addUpTo(array, --index) : array[index]
 }
+// function addUpTo(array,limit){
+//   // console.log(`${array} ** ${limit}`);
+//   // if(limit == 1){return array[0]+ array[1]}
+//   if(limit == 0){return array[0]}
+//   // return array[0] + addUpTo(array.splice(0,1),--limit)
+//   return parseInt(array.splice(0,1)) + addUpTo(array,--limit)
+// }
 // console.log  (addUpTo([2, 4, 5, 3], 2))
 
 
@@ -43,33 +54,36 @@ function isPalindrome(string){
 
 
 
-
-
-
-let reverseString = (string, start=null,middle=null,end=null)=>{
-  if(middle==null){ //beginning
-    start = 0
-    string.length %2 == 0 ? middle = parseInt(string.length/2) : middle = Math.ceil(string.length/2)
-    end = string.length-1
-    console.log(string);
-  }
-  // else if(start == middle){
-  //   return string
-  // }
-  string = string.split("")
-  let temp = string[start]
-  string[start]=string[end]
-  string[end] = temp
-  start++
-  end--
-  string = string.join("")
-  console.log(`${string} : ${start} ${middle} ${end}`)
-  if(start == middle){
-    return string
-  }
-  return reverseString(string, start,middle,end)
-
+function reverseString(string){
+  if (string.length < 2) {return string}
+  return reverseString(string.substring(1)) + string[0]
 }
+
+
+// let reverseString = (string, start=null,middle=null,end=null)=>{
+//   if(middle==null){ //beginning
+//     start = 0
+//     string.length %2 == 0 ? middle = parseInt(string.length/2) : middle = Math.ceil(string.length/2)
+//     end = string.length-1
+//     console.log(string);
+//   }
+//   // else if(start == middle){
+//   //   return string
+//   // }
+//   string = string.split("")
+//   let temp = string[start]
+//   string[start]=string[end]
+//   string[end] = temp
+//   start++
+//   end--
+//   string = string.join("")
+//   console.log(`${string} : ${start} ${middle} ${end}`)
+//   if(start == middle){
+//     return string
+//   }
+//   return reverseString(string, start,middle,end)
+//
+// }
 //this works but is not recursive
 // let reverseString = (string)=>{
 //   string = string.split("")
