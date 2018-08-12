@@ -1,24 +1,49 @@
 // Code your solution here!
-//this works but is not recursive
-let reverseString = (string)=>{
-  string = string.split("")
-  // console.log(parseInt(string.length/2));
-  let start = 0
-  let middle = ''
-  string.length %2 == 0 ? middle = parseInt(string.length/2) : middle = Math.ceil(string.length/2)
-  console.log(middle);
-  let end = string.length
-  // console.log(string);
-  for(i=0;i<middle;i++){
-    let temp = string[start]
-    string[start]=string[end]
-    string[end] = temp
-    start++
-    end--
-    // console.log(`${string} : ${start} ${end}`)
+
+let reverseString = (string, start=null,middle=null,end=null)=>{
+  if(middle==null){ //beginning
+    start = 0
+    string.length %2 == 0 ? middle = parseInt(string.length/2) : middle = Math.ceil(string.length/2)
+    end = string.length-1
+    console.log(string);
   }
-  return string.join("")
+  // else if(start == middle){
+  //   return string
+  // }
+  string = string.split("")
+  let temp = string[start]
+  string[start]=string[end]
+  string[end] = temp
+  start++
+  end--
+  string = string.join("")
+  console.log(`${string} : ${start} ${middle} ${end}`)
+  if(start == middle){
+    return string
+  }
+  return reverseString(string, start,middle,end)
+
 }
+//this works but is not recursive
+// let reverseString = (string)=>{
+//   string = string.split("")
+//   // console.log(parseInt(string.length/2));
+//   let start = 0
+//   let middle = ''
+//   string.length %2 == 0 ? middle = parseInt(string.length/2) : middle = Math.ceil(string.length/2)
+//   console.log(middle);
+//   let end = string.length
+//   // console.log(string);
+//   for(i=0;i<middle;i++){
+//     let temp = string[start]
+//     string[start]=string[end]
+//     string[end] = temp
+//     start++
+//     end--
+//     // console.log(`${string} : ${start} ${end}`)
+//   }
+//   return string.join("")
+// }
 
 
 
