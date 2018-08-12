@@ -1,6 +1,16 @@
 // Code your solution here!
 // let count = 0
 
+
+function includesNumber(array,number){
+  if(array.length == 0){return false}
+  if(array[0] == number){return true}
+  array.shift()
+  return includesNumber(array,number)
+}
+
+console.log(includesNumber([1, 4, 5, 3], 6));
+
 function maxOf(array){
   if(array.length == 1) {return array[0]}
   if(array[0] > array[array.length-1]){array.pop();return maxOf(array)}
